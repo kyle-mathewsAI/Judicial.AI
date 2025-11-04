@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basement Floor Plan</title>
+<style>
+body {
+background: #f2f2f2;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+
+.map-container {
+position: relative;
+display: inline-block;
+}
+
+.map-container img {
+display: block;
+max-width: 100%;
+height: auto;
+}
+
+.path {
+position: absolute;
+width: 20px;
+height: 20px;
+background: rgba(0,0,255,0.5);
+cursor: pointer;
+clip-path: polygon(-10% 25%, 100% 50%, -10% 75%);
+border-radius: 50% 0% 0% 50%;
+transition: transform 0.50s ease, clip-path 0.50s ease, background 1s ease;
+}
+
+.cam {
+position: absolute;
+width: 15px;
+height: 15px;
+background: rgba(0,255,0,0.5);
+cursor: pointer;
+border-radius: 50%;
+border: 2px solid white;
+transition: transform 0.50s ease;
+}
+
+.cam:hover {
+ transform: scale(1.5);
+}
+
+.path:hover {
+ transform: scale(1.5);
+clip-path: polygon(-10% 0, 100% 50%, -10% 100%);
+background: rgba(0,0,255,0.5);
+}
+
+.popup {
+position: absolute;
+display: none;
+background: white;
+border: 1px solid #ccc;
+padding: 6px;
+box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+z-index: 10;
+}
+
+.popup img {
+max-width: 220px;
+height: auto;
+display: block;
+}
+
+
+
+</style>
+</head>
+<body>
+
+<div class="map-container">
+<img src="Basement_floor_plan.jpg" alt="Floor Plan">
+
+<-- hotspot -->
+<div class="---" style="top: 50%; left: 50%;"
+onmouseenter="showPopup('----.jpeg', this)
+"onmouseleave='hidepopup()'></div>
+
+<div class="path" style="top: 51%; left: 38.5%;"  onmouseenter="showPopup('Basement_south_stairs.jpeg', this)
+"onmouseleave='hidepopup()'></div>
+
+<div class="path" style="top: 60%; left: 60%;"  onmouseenter="showPopup('Basement_loadingdock2.jpeg', this)
+"onmouseleave='hidepopup()'></div>
+
+
+<div class="path" style="top: 30%; left: 60%;"
+onmouseenter="showPopup('Basement_security_server2.jpeg', this)
+"onmouseleave='hidepopup()'></div>
+
+<div class="path" style="top: 39.3%; left: 58%;
+transform: rotate(0deg);"
+onmouseenter="showPopup('Basement_north_hallway.jpeg', this)
+"onmouseleave='hidepopup()'></div>
+
+<div class="cam" style="top: 40%; left: 58.6%;"
+onmouseenter="showPopup('Basement_security_hallway_cam1.jpeg', this)
+"onmouseleave='hidepopup()'></div>
+
+
+<div class="popup" id="popup">
+<img id="popup-img" src="" alt="">
+</div>
+</div>
+
+<script>
+function showPopup(imgSrc, element) {
+const popup = document.getElementById('popup');
+const popupImg = document.getElementById('popup-img');
+popupImg.src = imgSrc;
+popup.style.display = 'block';
+popup.style.top = (element.offsetTop - 220) + 'px';
+popup.style.left = (element.offsetLeft + 30) + 'px';
+}
+
+function hidepopup() {
+  document.getElementById('popup').style.display = 'none';
+}
+
+</script>
+
+</body>
+</html>
